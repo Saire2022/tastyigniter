@@ -7,10 +7,12 @@
     @elseif (!$pageIsCart)
         <a
             class="btn btn-primary btn-block btn-lg radius-none cart-toggle text-nowrap"
-            href="{{ site_url('cart') }}"
+            href="{{ site_url('cart') }}?table_id={{ $tableId }}"
         >
             @lang('igniter.cart::default.text_heading'):
             <span data-cart-total class="fw-bold">{{ currency_format($cart->total()) }}</span>
         </a>
     @endif
 </div>
+
+{{--@dd($tableId)--}}

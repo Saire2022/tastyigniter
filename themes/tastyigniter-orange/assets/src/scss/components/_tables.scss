@@ -1,0 +1,53 @@
+.table-card {
+  position: relative;  // Make the card the reference point for positioning the badge
+  //margin-bottom: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  .status {
+    position: absolute;  // Position it relative to the card
+    top: 10px;  // Distance from the top of the card
+    right: 10px;  // Distance from the right edge of the card
+    width: 40px;  // Circular shape size
+    height: 40px;
+    border-radius: 50%;  // Make it circular
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;  // Text color inside the circle
+
+    &.available {
+      background-color: green;
+      font-size: 0.8em;  // Adjust text size to fit within the circle
+    }
+
+    &.unavailable {
+      background-color: red;
+      font-size: 0.8em;  // Adjust text size to fit within the circle
+    }
+  }
+}
+
+
+.card-title {
+  font-weight: $font-weight-bold;
+  text-align: center;
+  font-size: x-large;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+.btn {
+  margin-top: 10px;
+}
+

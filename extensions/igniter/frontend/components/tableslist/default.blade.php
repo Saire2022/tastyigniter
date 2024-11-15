@@ -55,3 +55,4 @@
         </table>
     </div>
 </div>
+@partial('@tables')

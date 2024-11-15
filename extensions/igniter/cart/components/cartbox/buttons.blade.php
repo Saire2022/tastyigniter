@@ -20,9 +20,9 @@
     @elseif (!$locationIsClosed)
         data-request="{{ $orderEventHandler}}"
         data-request-data="locationId: '{{ $__SELF__->getLocationId() }}', tableId: '{{ $tableId }}'"
-    @elseif (!$locationIsClosed && $pageIsEdit)
-        data-request="{{ $editOrderHandler }}"
-        data-request-data="tableId:'{{ $tableId }}'"
+{{--    @elseif (!$locationIsClosed && $pageIsEdit)--}}
+{{--        data-request="{{ $editOrderHandler }}"--}}
+{{--        data-request-data="tableId:'{{ $tableId }}'"--}}
     @endif
 >
     {{ $__SELF__->buttonLabel($checkout ?? null) }}</button>

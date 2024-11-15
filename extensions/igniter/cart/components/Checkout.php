@@ -302,6 +302,9 @@ class Checkout extends BaseComponent
         });
     }
 
+    /*
+     * * Checkout the previous order.
+     */
     public function onUpdateOrderDetails()
     {
         $orderId = request('order_id');
@@ -313,6 +316,7 @@ class Checkout extends BaseComponent
         // Redirect to the home page after saving
         return Redirect::to('/');
     }
+
     public function onDeletePaymentProfile()
     {
         $customer = Auth::customer();
