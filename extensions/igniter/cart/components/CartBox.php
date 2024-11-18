@@ -3,15 +3,18 @@
 namespace Igniter\Cart\Components;
 
 use Admin\Models\Orders_model;
+use Admin\Models\Stock_history_model;
+use Admin\Models\Stocks_model;
 use Exception;
 use Igniter\Cart\Classes\CartManager;
 use Igniter\Cart\Models\CartSettings;
+use Igniter\Cart\Models\Menus_model;
 use Igniter\Flame\Cart\Facades\Cart;
 use Igniter\Flame\Exception\ApplicationException;
 use Igniter\Local\Facades\Location;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Request;
-
+use Illuminate\Support\Facades\Event;
 use Igniter\Cart\Classes\OrderManager;
 use Auth;
 
@@ -320,7 +323,6 @@ class CartBox extends \System\Classes\BaseComponent
             }
 
             Location::setCurrent($location);
-
             $tableId = post('tableId');
             if (!is_numeric($tableId)) {
                 throw new ApplicationException(lang('Please select a table on the Home page before placing an order.'));
@@ -328,14 +330,31 @@ class CartBox extends \System\Classes\BaseComponent
 
             // Create a new order instance
             $orderManager = OrderManager::instance();
-            $order = $orderManager->loadOrderData(); // This will ensure a new order
+            $order = $orderManager->loadOrderData();
+            $cart = $this->cartManager->getCart();
             $orderData = [
                 'location_id' => $location->location_id,
                 'table_id' => $tableId,
+                'cart' => $cart->content(),
+                'total_items' => $cart->count(),
+                'order_total' => $cart->total(),
             ];
             $order->status_id = 1;
-
+            $order->location_id=$location->location_id;
+            $order->cart = $cart->content();
+            $order->total_items = $cart->count();
+            $order->order_total = $cart->total();
+            $order->payment = "cod";
+            $order->order_time = now()->format('H:i');
+            $order->ip_address = request()->ip();
+            $order->order_type = "delivery";
+            $order->order_date = now();
+            $order->customer_id = Auth::getUser()->customer_id;
             $savedOrder = $orderManager->saveOrder($order, $orderData);
+
+            $orderId = $savedOrder->order_id;
+
+            $this->updateStock($cart, $orderId);
 
             Cart::destroy();
 
@@ -347,6 +366,40 @@ class CartBox extends \System\Classes\BaseComponent
             if (Request::ajax()) throw $ex;
             else flash()->alert($ex->getMessage());
         }
+    }
+
+    protected function updateStock($cart, $orderId)
+    {
+        foreach ($cart->content() as $item) {
+            $menuItemId = $item->id;
+            $quantity = $item->qty;
+
+            $stock = Stocks_model::where('stockable_id', $menuItemId)->first();
+            if ($stock) {
+                if ($stock->quantity >= $quantity) {
+                    $stock->quantity -= $quantity;
+                    $stock->is_tracked = true;
+                    $stock->save();
+
+                    $this->recordStockHistory($stock->id, $orderId, $quantity);
+                } else {
+                    throw new ApplicationException(lang('Not enough stock available for item: ' . $item->name));
+                }
+            }
+        }
+    }
+
+    protected function recordStockHistory($stockId, $orderId, $quantity)
+    {
+        $stockHistory = new Stock_history_model();
+        $stockHistory->stock_id = $stockId;
+        $stockHistory->staff_id = Auth::getUser()->customer_id ?? null; // Set staff_id to logged-in user if available
+        $stockHistory->order_id = $orderId;
+        $stockHistory->state = 'sold';
+        $stockHistory->quantity = $quantity; // Corrected typo
+        $stockHistory->created_at = now();
+        $stockHistory->updated_at = now();
+        $stockHistory->save();
     }
 
     public function onEditOrderWithoutCheckout () {

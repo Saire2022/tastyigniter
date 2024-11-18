@@ -213,7 +213,7 @@ class OrderManager
         }
 
         $this->setCurrentOrderId($order->order_id);
-
+        //dd($this->cart->content()->all());
         $order->addOrderMenus($this->cart->content()->all());
         $order->addOrderTotals($this->getCartTotals());
 
