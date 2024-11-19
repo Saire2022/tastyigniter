@@ -59,6 +59,11 @@ class Extension extends \System\Classes\BaseExtension
                 'name' => 'Tables List',
                 'description' => 'Displays a list of Tables',
             ],
+            \Igniter\FrontEnd\Components\Setlocal::class=> [
+                'code' => 'setlocal',
+                'name' => 'Set Restaurant location',
+                'description' => 'Setting restaurant location.',
+            ],
         ];
     }
 

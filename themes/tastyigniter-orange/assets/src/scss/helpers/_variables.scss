@@ -1,5 +1,5 @@
 $white: #FFF !default;
-$gray-100: #EFEDED !default;
+$gray-100: #EEEEEE !default;
 $gray-200: #E0DCDB !default;
 $gray-300: #D0CBC9 !default;
 $gray-400: #C1BAB8 !default;
@@ -10,7 +10,7 @@ $gray-800: #372B27 !default;
 $gray-900: #29201D !default;
 $black: #000 !default;
 
-$primary: #aa00ff !default;
+$primary: #EE8C21 !default;
 $secondary: $gray-600 !default;
 $success: #28A745 !default;
 $info: #17A2B8 !default;
@@ -41,7 +41,7 @@ $enable-negative-margins: true;
 
 // Fonts
 //
-$font-family-sans-serif: "Titillium Web", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$font-family-sans-serif: "Avenir", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !default;
 $font-family-monospace: "Droid Sans Mono", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
 // Icon
@@ -51,7 +51,7 @@ $fa-font-path: $icon-font-path;
 
 // Body
 //
-$body-bg: $gray-100 !default;
+$body-bg: $white !default;
 $body-color: $gray-800 !default;
 
 $font-size-base: 0.875rem !default;

@@ -2,24 +2,26 @@
 title: 'main::lang.home.title'
 permalink: /
 description: ''
-layout: default
-'[slider]':
-    code: home-slider
-'[localSearch]':
-    hideSearch: 0
+layout: blank
+'[setlocal]':
+    alias: '[setlocal]'
 '[featuredItems]':
-    title: 'Featured Elements'
-    items: ['6', '8', '11']
-    limit: 3.0
+    alias: '[featuredItems]'
+    title: null
+    items: null
+    limit: 12
     itemsPerRow: 3
-    itemWidth: 400.0
-    itemHeight: 300.0
-'[tablesList]': {  }
+    itemWidth: 400
+    itemHeight: 300
 ---
-@component('slider')
+{{--@component('slider')--}}
 
-@component('localSearch')
+{{--@component('localSearch')--}}
 
-@component('featuredItems')
+{{--@component('featuredItems')--}}
 
-@component('tablesList')
+{{--@component('tablesList')--}}
+
+{{--@dump(session('local_info.id'))--}}
+@component('setlocal')
+
