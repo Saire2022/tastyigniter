@@ -19,11 +19,6 @@ description: Account layout
     @partial('head')
 </head>
 <body class="d-flex flex-column h-100 {{ $this->page->bodyClass }}">
-
-    <header class="header">
-        @partial('header')
-    </header>
-
     <main role="main">
         <div id="notification">
             @partial('flash')
@@ -33,13 +28,6 @@ description: Account layout
             @page
         </div>
     </main>
-
-    <footer class="footer mt-auto">
-        @partial('footer')
-    </footer>
-    <div id="notification">
-        @partial('flash')
-    </div>
     @partial('scripts')
 </body>
 </html>

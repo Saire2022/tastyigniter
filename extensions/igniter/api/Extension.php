@@ -185,6 +185,16 @@ class Extension extends BaseExtension
                     'destroy:admin',
                 ],
             ],
+            'tables_by_location' => [
+                'controller' => \Acme\Extension\ApiResources\TablesByLocation::class,
+                'name' => 'Tables by Location',
+                'description' => 'An API resource for tables by location',
+                'actions' => [
+                    'index:admin', 'show:admin',
+                    'store:admin', 'update:admin',
+                    'destroy:admin',
+                ],
+            ],
         ];
     }
 

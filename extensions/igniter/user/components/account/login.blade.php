@@ -64,3 +64,5 @@
 </div>
 
 {!! form_close() !!}
+
+@dump(session()->all())

@@ -27,4 +27,21 @@ class Tables extends ApiController
     ];
 
     protected $requiredAbilities = ['tables:*'];
+
+    public function getbylocation()
+    {
+        dd('getbylocation action hit');
+        $location = request()->input('location_id');
+        //dd($location);
+
+        if (!$location) {
+            return $this->response->errorBadRequest('Location parameter is required.');
+        }
+
+        // Retrieve tables based on location
+        $tables = $this->repository->getByLocation($location);
+
+        // Return paginated data using transformer
+        return $this->response->paginator($tables, $this->transformer);
+    }
 }

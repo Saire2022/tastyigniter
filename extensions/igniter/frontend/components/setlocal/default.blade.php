@@ -1,4 +1,4 @@
-<div id="featured-menu-box" class="module-box py-5">
+<div id="select-location" class="module-box py-5">
     <div class="container text-center">
         <h2 class="mb-3">{{ $featuredTitle }}</h2>
         <div class="locations-container">
@@ -15,15 +15,29 @@
     </div>
 </div>
 
-<script>
-    function selectLocation(locationId, locationName) {
-        // Store location in localStorage
-        localStorage.setItem("restaurantLocationId", locationId);
-        localStorage.setItem("restaurantLocationName", locationName);
+<div id="select-customer-attendance" class="module-box py-5">
+    <div class="container text-center">
+        <div class="locations-container">
+            <div class="locations-container">
+                <a
+                    href="{{ page_url('account/register') }}"
+                    class="location-card">
+                    <p>I am a new Customer</p>
+                </a>
+                <a
+                    href="{{ site_url('/login') }}"
+                    class="location-card">
+                    <p> I am already registered</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 
-        // Redirect or reload page
-        alert(`Location ${locationName} selected!`);
-        location.reload(); // Reload or redirect to the appropriate page
-    }
-</script>
 
+@php
+    $localInfo = session('local_info', []);
+    $localInfo['id'] = 3;
+    session(['local_info' => $localInfo]);
+@endphp
+@dump(session()->all())

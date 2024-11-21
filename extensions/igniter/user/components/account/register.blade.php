@@ -136,3 +136,4 @@
 @else
     <p>@lang('igniter.user::default.login.alert_registration_disabled')</p>
 @endif
+@dump(session()->all())

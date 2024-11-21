@@ -1,6 +1,6 @@
 <nav class="navbar navbar-light navbar-top navbar-expand-md fixed-top">
     <div class="container">
-        @partial('nav/logo')
+
         <button
             class="navbar-toggler border-0"
             type="button"

@@ -14,12 +14,12 @@ class Setlocal extends BaseComponent
     }
 
     public function onRun() {
+        $this->addJs('/js/setlocation.js');
         $this->page['tables'] = $this->loadTables();
         $this->page['locations'] = $this->getLocations();
     }
     public function initialize()
     {
-        $this->addJs('js/setlocal.js');
     }
 
     protected function loadTables(){

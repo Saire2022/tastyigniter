@@ -64,12 +64,6 @@ description: 'Local layout'
         </div>
     </main>
 
-    <footer class="footer mt-auto d-none d-lg-block">
-        @partial('footer')
-    </footer>
-    <div id="notification">
-        @partial('flash')
-    </div>
     @partial('eucookiebanner')
     @partial('scripts')
 </body>

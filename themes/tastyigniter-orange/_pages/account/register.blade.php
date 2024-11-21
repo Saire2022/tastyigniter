@@ -19,7 +19,6 @@ layout: default
                     <h1 class="card-title h4 mb-4 font-weight-normal">
                         @lang('main::lang.account.login.text_register')
                     </h1>
-
                     @partial('account::register')
                 </div>
             </div>
