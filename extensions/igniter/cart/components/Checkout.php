@@ -146,23 +146,16 @@ class Checkout extends BaseComponent
 
     public function onRun()
     {
-        //Selected table
         $tableId = session('tableId');
         $this->page['tableId'] = $tableId;
 
-        //Get order data
         $orderId = request()->query('order_id');
+        $location_id=session('local_info.id');
 
         if($orderId){
             $order = Orders_model::find($orderId);
-            //dd($order);
-            // Deserialize the cart data
-            $cartContent = $order->cart; // This will give you the deserialized cart content
-            //dump($cartContent);
-            //$cart = $cartContent->items; // Access the items in the cart (this will depend on your cart structure)
-            //dd($cart);
-            // Set the order and cart data in the session
-            session()->put('cart.location-1.content', $cartContent);
+            $cartContent = $order->cart;
+            session()->put("cart.location-{$location_id}.content", $cartContent);
 
         }
 

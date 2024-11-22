@@ -84,7 +84,7 @@ class Session extends BaseComponent
             Event::fire('igniter.user.logout', [$user]);
         }
 
-        $url = post('redirect', Request::fullUrl());
+        $url = post('redirect');
 
         flash()->success(lang('igniter.user::default.alert_logout_success'));
 

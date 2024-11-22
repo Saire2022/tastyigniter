@@ -91,7 +91,7 @@ class Account extends \System\Classes\BaseComponent
             'redirectPage' => [
                 'label' => 'Page to redirect to after successful login or registration',
                 'type' => 'select',
-                'default' => 'account'.DIRECTORY_SEPARATOR.'account',
+                'default' => DIRECTORY_SEPARATOR.'tables',
                 'options' => [static::class, 'getThemePageOptions'],
                 'validationRule' => 'required|regex:/^[a-z0-9\-_\/]+$/i',
             ],

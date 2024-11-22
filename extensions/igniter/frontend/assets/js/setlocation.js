@@ -11,24 +11,31 @@ document.addEventListener("DOMContentLoaded", function () {
     } else {
         selectLocationSection.style.display = "none";
         selectCustomerAttendanceSection.style.display = "block";
-        //alert(`Location ${localStorage.getItem("restaurantLocationName")} was selected!`);
+        //window.location.href = '/login';
     }
 });
 
 function selectLocation(locationId, locationName) {
+    // Save location data to localStorage
     localStorage.setItem("restaurantLocationId", locationId);
     localStorage.setItem("restaurantLocationName", locationName);
-    fetchTables(locationId);
 
-    //document.getElementById("select-location").style.display = "none";
-    //document.getElementById("select-customer-attendance").style.display = "block";
-
-    // Redirect or reload page
-    //alert(`Location ${locationName} selected!`);
-    location.reload(); // Reload or redirect to the appropriate page
+    // Send an AJAX request to the server to update the session
+    $.request('onSaveLocationId', {
+        data: { location_id: locationId },
+        success: function(response) {
+            console.log('Location updated successfully!', response);
+            //fetchTables(locationId); // Fetch tables after updating location
+            location.reload(); // Reload the page to reflect the new location
+        },
+        error: function(error) {
+            console.error('Error updating location:', error);
+        }
+    });
 }
 
 async function fetchTables(locationId) {
+
     const accessToken = 'EobZFn7Vw1KRlz6Peefy9FYfYprlRlA9Rp3njTYFakeHoGJgA56vaVsqM2H8gZdXMC9A8J1zjeQymgnx';
 
     if (!accessToken) {
@@ -46,7 +53,6 @@ async function fetchTables(locationId) {
             }
         });
 
-        // Check if the response is successful (status code 200)
         if (!response.ok) {
             throw new Error(`Failed to fetch tables: ${response.statusText}`);
         }

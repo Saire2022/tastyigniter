@@ -12,6 +12,10 @@ description: ''
             @page
         </div>
     </main>
+    <div id="notification">
+        @partial('flash')
+    </div>
+    @partial('eucookiebanner')
     @partial('scripts')
 </body>
 </html>

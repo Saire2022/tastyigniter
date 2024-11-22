@@ -47,7 +47,6 @@ description: ''
         </div>
 
         <div class="col-lg-4">
-          <strong>HOLA</strong>
             @partial('cartBox::container')
         </div>
     </div>

@@ -4,3 +4,5 @@
 </div>
 
 @partial('@tables')
+
+@dump(session()->all())

@@ -6,7 +6,11 @@
                 <div class="location-card">
                     <h3>{{$location->location_name}}</h3>
                     <p><strong>Location ID:</strong> {{$location->location_id}}</p>
-                    <button onclick="selectLocation({{$location->location_id}}, '{{$location->location_name}}')">
+                    <button
+                        data-request="{{ $locationEventHandler }}"
+                        data-request-data="location_id: '{{ $location->location_id }}'"
+                        onclick="selectLocation({{$location->location_id}}, '{{$location->location_name}}')"
+                    >
                         Select
                     </button>
                 </div>
@@ -25,7 +29,7 @@
                     <p>I am a new Customer</p>
                 </a>
                 <a
-                    href="{{ site_url('/login') }}"
+                    href="{{ page_url('account/login') }}"
                     class="location-card">
                     <p> I am already registered</p>
                 </a>
@@ -33,11 +37,10 @@
         </div>
     </div>
 </div>
-
-
-@php
-    $localInfo = session('local_info', []);
-    $localInfo['id'] = 3;
-    session(['local_info' => $localInfo]);
-@endphp
+{{--@php--}}
+{{--    $localInfo = session('cart', []);--}}
+{{--    $localInfo = [];--}}
+{{--    session(['cart' => $localInfo]);--}}
+{{--@endphp--}}
 @dump(session()->all())
+

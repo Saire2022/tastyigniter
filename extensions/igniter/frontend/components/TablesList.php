@@ -50,7 +50,6 @@ class TablesList extends BaseComponent
     protected function loadOrders()
     {
         $locationId = Session::get('local_info.id');
-        // Assuming you have a column `location_id` in orders table
         return Orders_model::where('location_id', $locationId)->get();
     }
 }

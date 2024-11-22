@@ -310,14 +310,12 @@ class CartBox extends \System\Classes\BaseComponent
     //Save order without checkout View
     public function onSaveOrderWithoutCheckout()
     {
-        // Check if the user is logged in
         if (!Auth::getUser()) {
             throw new ApplicationException(lang('igniter.cart::default.checkout.alert_customer_not_logged'));
         }
         $this->cartManager->validateContents();
 
         try {
-            // Get the location ID and validate it
             if (!is_numeric($id = post('locationId')) || !($location = Location::getById($id)) || !$location->location_status) {
                 throw new ApplicationException(lang('igniter.local::default.alert_location_required'));
             }
@@ -361,7 +359,7 @@ class CartBox extends \System\Classes\BaseComponent
             flash()->success(lang('Order saved successfully. You can complete it later.'));
 
             // Redirect to the home page after saving
-            return Redirect::to('/');
+            return Redirect::to('/tables');
         } catch (Exception $ex) {
             if (Request::ajax()) throw $ex;
             else flash()->alert($ex->getMessage());

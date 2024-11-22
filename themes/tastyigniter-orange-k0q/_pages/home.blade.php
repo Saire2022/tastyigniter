@@ -24,6 +24,7 @@ layout: blank
     activationPage: account/register
     agreeRegistrationTermsPage: 1
     redirectPage: account/account
+'[tablesList]':
+    alias: '[tablesList]'
 ---
-@component('setlocal')
-
+@component('setlocal');
