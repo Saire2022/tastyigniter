@@ -4,8 +4,9 @@ namespace Igniter\Local\Components;
 
 use Admin\Models\Categories_model;
 use Igniter\Local\Facades\Location;
+use Illuminate\Support\Facades\Request;
 
-class Categories extends \System\Classes\BaseComponent
+class   Categories extends \System\Classes\BaseComponent
 {
     use \Main\Traits\UsesPage;
 
@@ -38,6 +39,8 @@ class Categories extends \System\Classes\BaseComponent
     public function onRun()
     {
         $this->page['menusPage'] = $this->property('menusPage');
+        $tableId = Request::query('table_id');
+        $this->page['tableId'] = $tableId;
         $this->page['hideEmptyCategory'] = (bool)$this->property('hideEmptyCategory', false);
         $this->page['hiddenCategories'] = $this->property('hiddenCategories') ?? [];
 

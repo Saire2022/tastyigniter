@@ -1,5 +1,5 @@
 ---
-description: ''
+description: 'This is blank layout'
 ---
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="{{ App::getLocale() }}" class="h-100">

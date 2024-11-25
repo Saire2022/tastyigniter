@@ -307,7 +307,7 @@ class Checkout extends BaseComponent
         flash()->success(lang('Order checkouted successfully.'));
 
         // Redirect to the home page after saving
-        return Redirect::to('/');
+        return Redirect::to('/tables');
     }
 
     public function onDeletePaymentProfile()

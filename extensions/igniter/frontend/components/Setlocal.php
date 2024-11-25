@@ -16,15 +16,15 @@ class Setlocal extends BaseComponent
     }
 
     public function onRun() {
-        Cart::destroy();
         $this->addJs('/js/setlocation.js');
         $this->prepareVars();
         $this->page['locations'] = $this->getLocations();
     }
 
     protected function prepareVars(){
+        Log::info('Generated Event Handler: ' . $this->getEventHandler('onSaveLocationId'));
         $this->page['locationEventHandler'] = $this->getEventHandler('onSaveLocationId');
-        Log::info('Event Handler: '.$this->page['locationEventHandler']);
+        //Log::info('Event Handler: '.$this->page['locationEventHandler']);
     }
     public function initialize()
     {
@@ -32,7 +32,9 @@ class Setlocal extends BaseComponent
 
     public function onSaveLocationId()
     {
+        Cart::destroy();
         $locationId = post('location_id');
+        Log::info('Location ID Received: ' . $locationId);
         if (!$locationId) {
             throw new ApplicationException(lang('Location ID is required.'));
         }

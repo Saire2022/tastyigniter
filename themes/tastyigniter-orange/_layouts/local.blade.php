@@ -34,14 +34,21 @@ description: 'Local layout'
 </head>
 <body class="d-flex flex-column h-100 {{ $this->page->bodyClass }}">
 
-    <header class="header">
-        @partial('header')
-    </header>
+{{--    <header class="header">--}}
+{{--        --}}
+{{--    </header>--}}
 
-    <main role="main">
+
+    <main role="main" class="d-flex">
+
+        <div class="col-lg-2 d-none d-lg-flex p-0">
+            @partial('sidebar')
+        </div>
+
         <div id="page-wrapper">
             <div class="container">
                 <div class="row py-4">
+
                     <div class="col-lg-2 d-none d-lg-inline-block">
                         <div class="categories affix-categories">
                             @component('categories')

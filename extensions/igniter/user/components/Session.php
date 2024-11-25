@@ -76,7 +76,7 @@ class Session extends BaseComponent
 
         Auth::logout();
 
-        session()->invalidate();
+        //session()->invalidate();
 
         session()->regenerateToken();
 

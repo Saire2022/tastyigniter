@@ -5,7 +5,7 @@
     <li class="nav-item">
         <a
             @class(['nav-link', 'active' => ($selectedCategory && $category->permalink_slug == $selectedCategory->permalink_slug)])
-            href="{{ page_url('local/menus', ['category' => $category->permalink_slug]) }}"
+            href="{{ page_url('local/menus', ['category' => $category->permalink_slug]) }}?table_id={{$tableId}}"
         >{{ $category->name }}</a>
 
         @if ((!isset($displayAsFlatTree) || !$displayAsFlatTree) && count($category->children))

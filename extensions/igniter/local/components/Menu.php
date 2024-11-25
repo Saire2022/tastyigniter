@@ -102,20 +102,14 @@ class Menu extends \System\Classes\BaseComponent
         if ($redirect = $this->checkLocationParam())
             return $redirect;
 
-        // Retrieve table_id from query parameters or URL parameters
         $tableId = input('table_id') ?? $this->param('table_id');
-        // Check if table_id is provided; if not, handle it gracefully
+        session()->put('table_id', $tableId);
         if ($tableId) {
             $table = Tables_model::where('table_id', $tableId)->first();
             $this->page['tableData'] = $table ? $table->toArray() : [];
         } else {
-            // Handle the case when table_id is not provided
-            $this->page['tableData'] = [];
-            $this->page['tableId'] = null;  // Set as null or any default action
+            $this->page['tableId'] = null;
         }
-        // Set the table_id in the page variable for use in the view
-        //$this->page['tableId'] = $tableId;
-
 
         $this->page['menuIsGrouped'] = !strlen($this->param('category')) && $this->property('isGrouped');
         $this->page['menuCollapseCategoriesAfter'] = $this->property('collapseCategoriesAfter');

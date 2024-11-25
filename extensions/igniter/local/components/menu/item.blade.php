@@ -1,5 +1,8 @@
 <div id="menu{{ $menuItem->menu_id }}" class="menu-item">
-    <strong class="text-muted"> {{ $menuItem->stock_qty > 0 ? 'Items left: '.$menuItem->stock_qty : 'Out of stock' }}</strong>    <div class="d-flex flex-row">
+    <strong class="<?php echo e($menuItem->stock_qty > 0 ? 'text-muted' : 'text-danger'); ?>">
+        <?php echo e($menuItem->stock_qty > 0 ? 'Items left: '.$menuItem->stock_qty : 'Out of stock'); ?>
+    </strong>
+    <div class="d-flex flex-row">
         @if ($showMenuImages == 1 && $menuItemObject->hasThumb)
             <div
                 class="col-3 p-0 me-3 menu-item-image align-self-center"

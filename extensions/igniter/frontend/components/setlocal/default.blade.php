@@ -7,8 +7,8 @@
                     <h3>{{$location->location_name}}</h3>
                     <p><strong>Location ID:</strong> {{$location->location_id}}</p>
                     <button
-                        data-request="{{ $locationEventHandler }}"
-                        data-request-data="location_id: '{{ $location->location_id }}'"
+                        data-request="setlocal::onSaveLocationId"
+                        data-request-data="location_id: {{ $location->location_id }}"
                         onclick="selectLocation({{$location->location_id}}, '{{$location->location_name}}')"
                     >
                         Select
