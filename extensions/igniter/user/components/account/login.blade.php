@@ -18,22 +18,36 @@
         <span class="input-group-text">@</span>
     </div>
     {!! form_error('email', '<span class="text-danger">', '</span>') !!}
-</div>
-
-<div class="form-group">
+</div><div class="form-group">
     <div class="input-group">
         <input
-            type="password"
-            name="password"
-            id="login-password"
+            type="text"
+            name="identification"
+            id="identification"
             class="form-control input-lg"
-            placeholder="@lang('igniter.user::default.login.label_password')"
+            placeholder="Identification"
+            autofocus=""
             required
         />
-        <span class="input-group-text"><i class="fa fa-lock"></i></span>
+        <span class="input-group-text">@</span>
     </div>
-    {!! form_error('password', '<span class="text-danger">', '</span>') !!}
+    {!! form_error('identification', '<span class="text-danger">', '</span>') !!}
 </div>
+
+{{--<div class="form-group">--}}
+{{--    <div class="input-group">--}}
+{{--        <input--}}
+{{--            type="password"--}}
+{{--            name="password"--}}
+{{--            id="login-password"--}}
+{{--            class="form-control input-lg"--}}
+{{--            placeholder="@lang('igniter.user::default.login.label_password')"--}}
+{{--            required--}}
+{{--        />--}}
+{{--        <span class="input-group-text"><i class="fa fa-lock"></i></span>--}}
+{{--    </div>--}}
+{{--    {!! form_error('password', '<span class="text-danger">', '</span>') !!}--}}
+{{--</div>--}}
 
 <div class="form-group">
     <div class="form-check">
