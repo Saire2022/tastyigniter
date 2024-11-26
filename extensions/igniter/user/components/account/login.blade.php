@@ -4,21 +4,22 @@
     'data-request' => 'account::onLogin',
 ]) !!}
 
+{{--<div class="form-group">--}}
+{{--    <div class="input-group">--}}
+{{--        <input--}}
+{{--            type="text"--}}
+{{--            name="email"--}}
+{{--            id="login-email"--}}
+{{--            class="form-control input-lg"--}}
+{{--            placeholder="@lang('igniter.user::default.settings.label_email')"--}}
+{{--            autofocus=""--}}
+{{--            required--}}
+{{--        />--}}
+{{--        <span class="input-group-text">@</span>--}}
+{{--    </div>--}}
+{{--    {!! form_error('email', '<span class="text-danger">', '</span>') !!}--}}
+{{--</div>--}}
 <div class="form-group">
-    <div class="input-group">
-        <input
-            type="text"
-            name="email"
-            id="login-email"
-            class="form-control input-lg"
-            placeholder="@lang('igniter.user::default.settings.label_email')"
-            autofocus=""
-            required
-        />
-        <span class="input-group-text">@</span>
-    </div>
-    {!! form_error('email', '<span class="text-danger">', '</span>') !!}
-</div><div class="form-group">
     <div class="input-group">
         <input
             type="text"
@@ -27,9 +28,10 @@
             class="form-control input-lg"
             placeholder="Identification"
             autofocus=""
+            maxlength="10"
             required
         />
-        <span class="input-group-text">@</span>
+{{--        <span class="input-group-text">@</span>--}}
     </div>
     {!! form_error('identification', '<span class="text-danger">', '</span>') !!}
 </div>

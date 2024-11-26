@@ -18,21 +18,21 @@ description: ''
 
                     @partial('account::login')
 
-                    <div class="row">
-                        <div class="col-md-5 p-sm-0">
-                            <a class="btn btn-link btn-lg" href="{{ site_url('account/reset') }}">
-                                <span class="small">@lang('main::lang.account.login.text_forgot')</span>
-                            </a>
-                        </div>
-                        @if ((bool)$canRegister)
-                            <div class="col-sm-7">
-                                <a
-                                    class="btn btn-outline-default btn-block btn-lg"
-                                    href="{{ site_url('account/register') }}"
-                                >@lang('main::lang.account.login.button_register')</a>
-                            </div>
-                        @endif
-                    </div>
+{{--                    <div class="row">--}}
+{{--                        <div class="col-md-5 p-sm-0">--}}
+{{--                            <a class="btn btn-link btn-lg" href="{{ site_url('account/reset') }}">--}}
+{{--                                <span class="small">@lang('main::lang.account.login.text_forgot')</span>--}}
+{{--                            </a>--}}
+{{--                        </div>--}}
+{{--                        @if ((bool)$canRegister)--}}
+{{--                            <div class="col-sm-7">--}}
+{{--                                <a--}}
+{{--                                    class="btn btn-outline-default btn-block btn-lg"--}}
+{{--                                    href="{{ site_url('account/register') }}"--}}
+{{--                                >@lang('main::lang.account.login.button_register')</a>--}}
+{{--                            </div>--}}
+{{--                        @endif--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

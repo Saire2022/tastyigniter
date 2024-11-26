@@ -24,16 +24,14 @@ description: 'Local layout'
     @partial('head')
 </head>
 <body class="d-flex flex-column h-100 {{ $this->page->bodyClass }}">
-
-    <header class="header">
-        @partial('header')
-    </header>
-
     <main role="main">
         <div id="page-wrapper">
-            <div class="container">
-                <div class="row py-4">
-                    <div class="col-lg-8">
+            <div class="container-fluid">
+                <div class="row py-4 h-100">
+                    <div class="col-lg-2">
+                        @partial('sidebar')
+                    </div>
+                    <div class="col-lg-6">
                         <div class="categories affix-categories">
                             @component('categories')
                         </div>

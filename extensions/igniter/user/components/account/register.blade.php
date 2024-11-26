@@ -76,10 +76,11 @@
                     class="form-control input-lg"
                     value=""
                     name="identification"
-                    placeholder="Identification">
+                    placeholder="Identification"
+                    maxlength="10"
+                >
                 {!! form_error('identification', '<span class="text-danger">', '</span>') !!}
             </div>
-
 
     <div class="form-group">
         <input
@@ -148,4 +149,4 @@
 @else
     <p>@lang('igniter.user::default.login.alert_registration_disabled')</p>
 @endif
-@dump(session()->all())
+{{--@dump(session()->all())--}}

@@ -59,6 +59,7 @@ class Customers_model extends AuthUserModel
         'date_invited' => 'datetime',
         'date_activated' => 'datetime',
         'reset_time' => 'datetime',
+        'identication' => 'string',
     ];
 
     public static function getDropdownOptions()
@@ -262,4 +263,34 @@ class Customers_model extends AuthUserModel
             'email' => $model->email,
         ]);
     }
+
+    /**
+     * Authenticate a customer using only the identification.
+     *
+     * @param string $identification
+     * @return self|null
+     * @throws Exception If authentication fails.
+     */
+    public static function authenticateWithIdentification($identification)
+    {
+        // Attempt to find a customer by the identification field
+        $customer = self::where('identification', $identification)->first();
+        //dd($customer);
+
+        if (!$customer) {
+            throw new Exception(lang('admin::lang.customers.alert_customer_not_found'));
+        }
+
+        // Additional checks: Ensure the customer is activated and enabled
+        if (!$customer->enabled() || !$customer->is_activated) {
+            throw new Exception(lang('admin::lang.customers.alert_customer_not_active'));
+        }
+
+        // Update last login time
+        $customer->last_login = Carbon::now();
+        $customer->save();
+
+        return $customer;
+    }
+
 }

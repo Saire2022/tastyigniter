@@ -1,17 +1,5 @@
 <!-- Sidebar Navigation -->
-<div class="sidebar navbar-light bg-light border-end d-flex flex-column vh-100 p-3">
-    <button
-        class="navbar-toggler border-0 mb-3 d-lg-none"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarMainHeader"
-        aria-controls="navbarMainHeader"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-    >
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
+<div class="sidebar-local navbar-light bg-light border-end d-flex flex-column vh-100 p-3">
     <div class="collapse navbar-collapse show" id="navbarMainHeader">
         <ul class="nav flex-column">
             @foreach ($mainMenu->menuItems() as $navItem)

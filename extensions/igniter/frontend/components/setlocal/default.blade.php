@@ -42,5 +42,5 @@
 {{--    $localInfo = [];--}}
 {{--    session(['cart' => $localInfo]);--}}
 {{--@endphp--}}
-@dump(session()->all())
+{{--@dump(session()->all())--}}
 

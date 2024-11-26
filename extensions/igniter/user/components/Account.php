@@ -167,9 +167,9 @@ class Account extends \System\Classes\BaseComponent
     {
         try {
             $namedRules = [
-                ['email', 'lang:igniter.user::default.settings.label_email', 'required|email:filter|max:96'],
+                //['email', 'lang:igniter.user::default.settings.label_email', 'required|email:filter|max:96'],
                 //['password', 'lang:igniter.user::default.login.label_password', 'required|min:8|max:40'],
-                ['identification', 'Identification', 'required|min:10'],
+                ['identification', 'identification', 'required|min:10'],
                 ['remember', 'lang:igniter.user::default.login.label_remember', 'integer'],
             ];
 
@@ -177,15 +177,21 @@ class Account extends \System\Classes\BaseComponent
 
             $remember = (bool)post('remember');
             $credentials = [
-                'email' => post('email'),
+                //'email' => post('email'),
                 //'password' => post('password'),
                 'identification' => post('identification'),
             ];
+            //dd($this);
+            $identification = post('identification');
 
             Event::fire('igniter.user.beforeAuthenticate', [$this, $credentials]);
+;
+            $user = Customers_model::authenticateWithIdentification($identification);
 
-            if (!Auth::authenticate($credentials, $remember, true))
+            if (!$user) {
                 throw new ApplicationException(lang('igniter.user::default.login.alert_invalid_login'));
+            }
+            Auth::login($user, $remember);
 
             session()->regenerate();
 
@@ -213,7 +219,7 @@ class Account extends \System\Classes\BaseComponent
                 ['first_name', 'lang:igniter.user::default.settings.label_first_name', 'required|between:1,48'],
                 ['last_name', 'lang:igniter.user::default.settings.label_last_name', 'required|between:1,48'],
                 ['email', 'lang:igniter.user::default.settings.label_email', 'required|email:filter|max:96|unique:customers,email'],
-                ['identification', 'identification', 'required|between:1,10'],
+                ['identification', 'identification', 'required|max:10|unique:customers,identification'],
                 //['password', 'lang:igniter.user::default.login.label_password', 'required|min:6|max:32|same:password_confirm'],
                 //['password_confirm', 'lang:igniter.user::default.login.label_password_confirm', 'required'],
                 ['telephone', 'lang:igniter.user::default.settings.label_telephone', 'required'],
@@ -225,6 +231,7 @@ class Account extends \System\Classes\BaseComponent
 
             $this->validate($data, $rules);
 
+            //dd($data);
             Event::fire('igniter.user.beforeRegister', [&$data]);
 
             $data['status'] = true;
@@ -239,10 +246,12 @@ class Account extends \System\Classes\BaseComponent
             );
 
             Event::fire('igniter.user.register', [$customer, $data]);
+            //if (strlen($this->getRegistrationTermsPageSlug()))
 
             $redirectUrl = $this->controller->pageUrl($this->property('redirectPage'));
 
-            if ($requireActivation) {
+            if ($requireActivation) {            //if (strlen($this->getRegistrationTermsPageSlug()))
+
                 $this->sendActivationEmail($customer);
                 flash()->success(lang('igniter.user::default.login.alert_account_activation'));
                 $redirectUrl = $this->controller->pageUrl($this->property('loginPage'));
