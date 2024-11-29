@@ -36,6 +36,7 @@ return [
 
     'label_first_name' => 'First Name',
     'label_last_name' => 'Last Name',
+    'label_full_name' => 'Full Name',
     'label_email' => 'Email Address',
     'label_confirm_email' => 'Confirm Email Address',
     'label_telephone' => 'Telephone',

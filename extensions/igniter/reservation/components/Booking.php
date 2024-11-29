@@ -255,7 +255,7 @@ class Booking extends BaseComponent
 
         $index = 0;
         $dateTimes = $this->manager->makeTimeSlots($selectedDate);
-        foreach ($dateTimes as $dateTime) {
+            foreach ($dateTimes as $dateTime) {
             $selectedDateTime = $selectedDate->copy()->setTimeFromTimeString($dateTime->format('H:i'));
             $result[] = (object)[
                 'isSelected' => $dateTime->format('H:i') == $selectedTime->format('H:i'),
@@ -347,6 +347,7 @@ class Booking extends BaseComponent
 
         try {
             $reservation = $this->getReservation();
+            //dd($reservation);
 
             $this->manager->saveReservation($reservation, $data);
 
@@ -393,8 +394,10 @@ class Booking extends BaseComponent
                     $telephoneRule = 'required|'.$telephoneRule;
 
                 return [
-                    ['first_name', 'lang:igniter.reservation::default.label_first_name', 'required|between:1,48'],
-                    ['last_name', 'lang:igniter.reservation::default.label_last_name', 'required|between:1,48'],
+                    //['first_name', 'lang:igniter.reservation::default.label_first_name', 'required|between:1,48'],
+                    //['last_name', 'lang:igniter.reservation::default.label_last_name', 'required|between:1,48'],
+                    ['full_name', 'lang:igniter.reservation::default.label_full_name', 'required|string'],
+                    ['identification', 'lang:igniter.reservation::default.label_identification', 'required|string|size:10'],
                     ['email', 'lang:igniter.reservation::default.label_email', 'sometimes|required|email:filter|max:96'],
                     ['telephone', 'lang:igniter.reservation::default.label_telephone', $telephoneRule],
                     ['comment', 'lang:igniter.reservation::default.label_comment', 'max:520'],

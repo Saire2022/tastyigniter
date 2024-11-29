@@ -26,8 +26,8 @@ description: 'Local layout'
 <body class="d-flex flex-column h-100 {{ $this->page->bodyClass }}">
     <main role="main">
         <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row py-4 h-100">
+            <div class="container">
+                <div class="row py-5">
                     <div class="col-lg-2">
                         @partial('sidebar')
                     </div>

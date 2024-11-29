@@ -2,7 +2,7 @@
     <h5 class="card-title">@lang($field->label)</h5>
     <div class="py-2 lead">
         @if ($formModel->customer)
-            <a href="{{ admin_url('customers/preview/'.$formModel->customer_id) }}">{{ $formModel->customer_name }}</a>
+            <a href="{{ admin_url('customers/preview/'.$formModel->customer_id) }}">{{ $formModel->full_name }}</a>
         @else
             {{ $formModel->customer_name }}
         @endif

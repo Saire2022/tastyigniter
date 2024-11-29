@@ -181,8 +181,10 @@ class BookingManager
 
         return [
             'customer_id' => $customer->customer_id ?? null,
-            'first_name' => $customer->first_name ?? null,
-            'last_name' => $customer->last_name ?? null,
+            //'first_name' => $customer->first_name ?? null,
+            //'last_name' => $customer->last_name ?? null,
+            'full_name' => $customer->full_name ?? null,
+            'identification' => $customer->identification ?? null,
             'email' => $customer->email ?? null,
             'telephone' => $customer->telephone ?? null,
         ];

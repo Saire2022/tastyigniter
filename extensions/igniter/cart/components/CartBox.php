@@ -348,10 +348,11 @@ class CartBox extends \System\Classes\BaseComponent
             $order->order_type = "delivery";
             $order->order_date = now();
             $order->customer_id = Auth::getUser()->customer_id;
+            $order->full_name = Auth::getUser()->full_name;
+            $order->identification = Auth::getUser()->identification;
+            $order->customer_address = Auth::getUser()->customer_address;
             $savedOrder = $orderManager->saveOrder($order, $orderData);
-
             $orderId = $savedOrder->order_id;
-
             $this->updateStock($cart, $orderId);
 
             Cart::destroy();

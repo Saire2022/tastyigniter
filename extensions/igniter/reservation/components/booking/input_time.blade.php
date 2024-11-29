@@ -1,3 +1,4 @@
+{{--@dump($timeOptions)--}}
 <select
     name="time"
     id="time"

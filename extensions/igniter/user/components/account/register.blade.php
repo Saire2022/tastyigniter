@@ -4,33 +4,16 @@
         'method' => 'POST',
         'data-request' => 'account::onRegister',
     ]) !!}
-
-    <div class="form-row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <input
-                    type="text"
-                    id="first-name"
-                    class="form-control input-lg"
-                    value="{{ set_value('first_name') }}"
-                    name="first_name"
-                    placeholder="@lang('igniter.user::default.settings.label_first_name')"
-                    autofocus="">
-                {!! form_error('first_name', '<span class="text-danger">', '</span>') !!}
-            </div>
-        </div>
-        <div class="col-sm-6">
-            <div class="form-group">
-                <input
-                    type="text"
-                    id="last-name"
-                    class="form-control input-lg"
-                    value="{{ set_value('last_name') }}"
-                    name="last_name"
-                    placeholder="@lang('igniter.user::default.settings.label_last_name')">
-                {!! form_error('last_name', '<span class="text-danger">', '</span>') !!}
-            </div>
-        </div>
+    <div class="form-group">
+        <input
+            type="text"
+            id="full-name"
+            class="form-control input-lg"
+            value="{{ set_value('full_name') }}"
+            name="full_name"
+            placeholder="@lang('Full Name')"
+        >
+        {!! form_error('full_name', '<span class="text-danger">', '</span>') !!}
     </div>
     <div class="form-group">
         <input
@@ -42,49 +25,22 @@
             placeholder="@lang('igniter.user::default.settings.label_email')">
         {!! form_error('email', '<span class="text-danger">', '</span>') !!}
     </div>
-{{--    <div class="form-row">--}}
-{{--        <div class="col-sm-6">--}}
-{{--            <div class="form-group">--}}
-{{--                <input--}}
-{{--                    type="password"--}}
-{{--                    id="password"--}}
-{{--                    class="form-control input-lg"--}}
-{{--                    value=""--}}
-{{--                    name="password"--}}
-{{--                    placeholder="@lang('igniter.user::default.login.label_password')">--}}
-{{--                {!! form_error('password', '<span class="text-danger">', '</span>') !!}--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--        <div class="col-sm-6">--}}
-{{--            <div class="form-group">--}}
-{{--                <input--}}
-{{--                    type="password"--}}
-{{--                    id="password-confirm"--}}
-{{--                    class="form-control input-lg"--}}
-{{--                    name="password_confirm"--}}
-{{--                    value=""--}}
-{{--                    placeholder="@lang('igniter.user::default.login.label_password_confirm')">--}}
-{{--                {!! form_error('password_confirm', '<span class="text-danger">', '</span>') !!}--}}
-{{--            </div>--}}
-{{--        </div>--}}
-{{--    </div>--}}
-
-            <div class="form-group">
-                <input
-                    type="text"
-                    id="identification"
-                    class="form-control input-lg"
-                    value=""
-                    name="identification"
-                    placeholder="Identification"
-                    maxlength="10"
-                >
-                {!! form_error('identification', '<span class="text-danger">', '</span>') !!}
-            </div>
-
     <div class="form-group">
         <input
             type="text"
+            id="identification"
+            class="form-control input-lg"
+            value=""
+            name="identification"
+            placeholder="Identification"
+            maxlength="10"
+        >
+        {!! form_error('identification', '<span class="text-danger">', '</span>') !!}
+    </div>
+
+    <div class="form-group">
+        <input
+            type="tel"
             id="telephone"
             class="form-control input-lg"
             value="{{ set_value('telephone') }}"
@@ -94,42 +50,17 @@
         {!! form_error('telephone', '<span class="text-danger">', '</span>') !!}
     </div>
 
-{{--    <div class="form-group">--}}
-{{--        <div class="form-check">--}}
-{{--            <input--}}
-{{--                id="newsletter"--}}
-{{--                type="checkbox"--}}
-{{--                name="newsletter"--}}
-{{--                value="1"--}}
-{{--                class="form-check-input"--}}
-{{--                {!! set_checkbox('newsletter', '1') !!}--}}
-{{--            >--}}
-{{--            <label class="form-check-label" for="newsletter">--}}
-{{--                @lang('igniter.user::default.login.label_newsletter')--}}
-{{--            </label>--}}
-{{--        </div>--}}
-{{--        {!! form_error('newsletter', '<span class="text-danger">', '</span>') !!}--}}
-{{--    </div>--}}
-
-{{--    @if ($requireRegistrationTerms && $registrationTermsSlug = $account->getRegistrationTermsPageSlug())--}}
-{{--        <div class="form-group">--}}
-{{--            <div class="form-check">--}}
-{{--                <input--}}
-{{--                    id="agree-terms"--}}
-{{--                    type="checkbox"--}}
-{{--                    name="terms"--}}
-{{--                    value="1"--}}
-{{--                    class="form-check-input"--}}
-{{--                    {!! set_checkbox('terms', '1') !!}--}}
-{{--                >--}}
-{{--                <label class="form-check-label" for="agree-terms">--}}
-{{--                    {!! sprintf(lang('igniter.user::default.login.label_terms'), url($registrationTermsSlug)) !!}--}}
-{{--                </label>--}}
-{{--            </div>--}}
-{{--            {!! form_error('terms', '<span class="text-danger">', '</span>') !!}--}}
-{{--        </div>--}}
-{{--    @endif--}}
-
+    <div class="form-group">
+        <input
+            type="text"
+            id="customer_address"
+            class="form-control input-lg"
+            value="{{ set_value('customer_address') }}"
+            name="customer_address"
+            placeholder="@lang('igniter.user::default.settings.label_customer_address')"
+        >
+        {!! form_error('customer_address', '<span class="text-danger">', '</span>') !!}
+    </div>
     <div class="row">
         <div class="col-12 mb-2">
             <button

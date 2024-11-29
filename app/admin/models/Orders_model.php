@@ -95,6 +95,21 @@ class Orders_model extends Model
         return $this->customer->addresses()->get();
     }
 
+    public function getCustomerAddress($customerId)
+    {
+        if (!$customerId) {
+            return null;
+        }
+
+        $customer = Customers_model::find($customerId);
+        if (!$customer) {
+            return null;
+        }
+
+        return $customer->addresses()->first();
+    }
+
+
     //
     // Events
     //

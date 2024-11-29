@@ -5,4 +5,4 @@
 
 @partial('@tables')
 
-@dump(session()->all())
+{{--@dump(session()->all())--}}

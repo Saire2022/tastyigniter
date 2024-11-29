@@ -48,7 +48,6 @@ description: 'Local layout'
         <div id="page-wrapper">
             <div class="container">
                 <div class="row py-4">
-
                     <div class="col-lg-2 d-none d-lg-inline-block">
                         <div class="categories affix-categories">
                             @component('categories')

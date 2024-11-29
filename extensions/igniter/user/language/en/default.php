@@ -142,6 +142,8 @@ return [
         'text_heading' => 'My Details',
         'text_details' => 'Edit your details',
         'text_password_heading' => 'Change Password',
+        'text_address_heading' => 'Change Address',
+
 
         'button_subscribe' => 'Subscribe',
         'button_back' => 'Back',
@@ -150,7 +152,10 @@ return [
 
         'label_first_name' => 'First Name',
         'label_last_name' => 'Last Name',
+        'label_full_name' => 'Full Name',
         'label_email' => 'Email Address',
+        'label_identification' => 'Identification',
+        'label_customer_address' => 'Address',
         'label_password' => 'New Password',
         'label_password_confirm' => 'New Password Confirm',
         'label_old_password' => 'Old Password',

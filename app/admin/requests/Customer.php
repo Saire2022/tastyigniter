@@ -9,8 +9,10 @@ class Customer extends FormRequest
     public function attributes()
     {
         return [
-            'first_name' => lang('admin::lang.customers.label_first_name'),
-            'last_name' => lang('admin::lang.customers.label_last_name'),
+            //'first_name' => lang('admin::lang.customers.label_first_name'),
+            //'last_name' => lang('admin::lang.customers.label_last_name'),
+            'full_name' => lang('admin::lang.customers.label_full_name'),
+            'identification' => lang('admin::lang.customers.label_identification'),
             'email' => lang('admin::lang.label_email'),
             'telephone' => lang('admin::lang.customers.label_telephone'),
             'newsletter' => lang('admin::lang.customers.label_newsletter'),
@@ -21,16 +23,18 @@ class Customer extends FormRequest
             'addresses.*.state' => lang('admin::lang.customers.label_state'),
             'addresses.*.postcode' => lang('admin::lang.customers.label_postcode'),
             'addresses.*.country_id' => lang('admin::lang.customers.label_country'),
-            'password' => lang('admin::lang.customers.label_password'),
-            '_confirm_password' => lang('admin::lang.customers.label_confirm_password'),
+            //'password' => lang('admin::lang.customers.label_password'),
+            //'_confirm_password' => lang('admin::lang.customers.label_confirm_password'),
         ];
     }
 
     public function rules()
     {
         $rules = [
-            'first_name' => ['required', 'between:1,48'],
-            'last_name' => ['required', 'between:1,48'],
+            //'first_name' => ['required', 'between:1,48'],
+            //'last_name' => ['required', 'between:1,48'],
+            'full_name' => ['required', 'between:1,80'],
+            'identification' => ['required', 'size:10', 'unique:customers,identification'],
             'email' => ['required', 'email:filter', 'max:96', 'unique:customers,email'],
             'telephone' => ['sometimes'],
             'newsletter' => ['sometimes', 'required', 'boolean'],

@@ -80,10 +80,15 @@ $config['list']['columns'] = [
         ],
     ],
     'full_name' => [
-        'label' => 'lang:admin::lang.customers.column_full_name',
+        'label' => 'Full Name',
         'type' => 'text',
-        'select' => 'concat(first_name, " ", last_name)',
-        'searchable' => true,
+        'select' => 'full_name',
+    ],
+    'identification' => [
+        'label' => 'Identification',
+        'type' => 'text',
+        'select' => 'identification',
+        //'searchable' => true,
     ],
     'email' => [
         'label' => 'lang:admin::lang.label_email',
@@ -152,25 +157,30 @@ $config['form']['toolbar'] = [
 $config['form']['tabs'] = [
     'defaultTab' => 'lang:admin::lang.customers.text_tab_general',
     'fields' => [
-        'first_name' => [
-            'label' => 'lang:admin::lang.customers.label_first_name',
+        'full_name' => [
+            'label' => 'lang:admin::lang.customers.label_full_name',
             'type' => 'text',
             'span' => 'left',
         ],
-        'last_name' => [
-            'label' => 'lang:admin::lang.customers.label_last_name',
+        'identification' => [
+            'label' => 'lang:admin::lang.customers.label_identification',
             'type' => 'text',
             'span' => 'right',
         ],
         'email' => [
             'label' => 'lang:admin::lang.label_email',
             'type' => 'text',
-            'span' => 'left',
+            'span' => 'right',
         ],
         'telephone' => [
             'label' => 'lang:admin::lang.customers.label_telephone',
             'type' => 'text',
             'span' => 'right',
+        ],
+        'customer_address' => [
+            'label' => 'lang:admin::lang.customers.label_address',
+            'type' => 'text',
+            'span' => 'left',
         ],
         'send_invite' => [
             'label' => 'lang:admin::lang.customers.label_send_invite',
@@ -180,27 +190,27 @@ $config['form']['tabs'] = [
             'options' => [],
             'placeholder' => 'lang:admin::lang.customers.help_send_invite',
         ],
-        'password' => [
-            'label' => 'lang:admin::lang.customers.label_password',
-            'type' => 'password',
-            'span' => 'left',
-            'comment' => 'lang:admin::lang.customers.help_password',
-            'trigger' => [
-                'action' => 'show',
-                'field' => 'send_invite',
-                'condition' => 'unchecked',
-            ],
-        ],
-        '_confirm_password' => [
-            'label' => 'lang:admin::lang.customers.label_confirm_password',
-            'type' => 'password',
-            'span' => 'right',
-            'trigger' => [
-                'action' => 'show',
-                'field' => 'send_invite',
-                'condition' => 'unchecked',
-            ],
-        ],
+//        'password' => [
+//            'label' => 'lang:admin::lang.customers.label_password',
+//            'type' => 'password',
+//            'span' => 'left',
+//            'comment' => 'lang:admin::lang.customers.help_password',
+//            'trigger' => [
+//                'action' => 'show',
+//                'field' => 'send_invite',
+//                'condition' => 'unchecked',
+//            ],
+//        ],
+//        '_confirm_password' => [
+//            'label' => 'lang:admin::lang.customers.label_confirm_password',
+//            'type' => 'password',
+//            'span' => 'right',
+//            'trigger' => [
+//                'action' => 'show',
+//                'field' => 'send_invite',
+//                'condition' => 'unchecked',
+//            ],
+//        ],
         'customer_group_id' => [
             'label' => 'lang:admin::lang.customers.label_customer_group',
             'type' => 'relation',
@@ -238,8 +248,11 @@ $config['form']['tabs'] = [
                 'order_id' => [
                     'title' => 'lang:admin::lang.column_id',
                 ],
-                'customer_name' => [
+                'full_name' => [
                     'title' => 'lang:admin::lang.orders.column_customer_name',
+                ],
+                'identification' => [
+                    'title' => 'lang:admin::lang.orders.column_identification',
                 ],
                 'status_name' => [
                     'title' => 'lang:admin::lang.label_status',

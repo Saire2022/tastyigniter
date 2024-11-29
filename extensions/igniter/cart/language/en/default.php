@@ -143,6 +143,8 @@ return [
         'label_customer_name' => 'Customer Name',
         'label_first_name' => 'First Name',
         'label_last_name' => 'Last Name',
+        'label_full_name' => 'Full Name',
+        'label_identification' => 'Identification',
         'label_email' => 'Email',
         'label_telephone' => 'Telephone',
         'label_address' => 'Delivery address',

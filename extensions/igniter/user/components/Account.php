@@ -216,10 +216,11 @@ class Account extends \System\Classes\BaseComponent
             $data = post();
 
             $rules = [
-                ['first_name', 'lang:igniter.user::default.settings.label_first_name', 'required|between:1,48'],
-                ['last_name', 'lang:igniter.user::default.settings.label_last_name', 'required|between:1,48'],
+                ['full_name', 'full_name', 'required|between:10,80'],
+                //['last_name', 'lang:igniter.user::default.settings.label_last_name', 'required|between:1,48'],
                 ['email', 'lang:igniter.user::default.settings.label_email', 'required|email:filter|max:96|unique:customers,email'],
                 ['identification', 'identification', 'required|max:10|unique:customers,identification'],
+                ['customer_address', 'lang:igniter.user::default.settings.label_address', 'max:100'],
                 //['password', 'lang:igniter.user::default.login.label_password', 'required|min:6|max:32|same:password_confirm'],
                 //['password_confirm', 'lang:igniter.user::default.login.label_password_confirm', 'required'],
                 ['telephone', 'lang:igniter.user::default.settings.label_telephone', 'required'],
@@ -250,7 +251,7 @@ class Account extends \System\Classes\BaseComponent
 
             $redirectUrl = $this->controller->pageUrl($this->property('redirectPage'));
 
-            if ($requireActivation) {            //if (strlen($this->getRegistrationTermsPageSlug()))
+            if ($requireActivation) {
 
                 $this->sendActivationEmail($customer);
                 flash()->success(lang('igniter.user::default.login.alert_account_activation'));
@@ -281,13 +282,15 @@ class Account extends \System\Classes\BaseComponent
             $data = post();
 
             $rules = [
-                ['first_name', 'lang:igniter.user::default.settings.label_first_name', 'required|between:1,48'],
-                ['last_name', 'lang:igniter.user::default.settings.label_last_name', 'required|between:1,48'],
-                ['old_password', 'lang:igniter.user::default.settings.label_old_password', 'required_with:new_password'],
-                ['new_password', 'lang:igniter.user::default.settings.label_password', 'required_with:old_password|min:8|max:40|same:confirm_new_password'],
-                ['confirm_new_password', 'lang:igniter.user::default.settings.label_password_confirm', 'required_with:old_password'],
+                //['first_name', 'lang:igniter.user::default.settings.label_first_name', 'required|between:1,48'],
+                //['last_name', 'lang:igniter.user::default.settings.label_last_name', 'required|between:1,48'],
+                //['old_password', 'lang:igniter.user::default.settings.label_old_password', 'required_with:new_password'],
+                //['new_password', 'lang:igniter.user::default.settings.label_password', 'required_with:old_password|min:8|max:40|same:confirm_new_password'],
+                //['confirm_new_password', 'lang:igniter.user::default.settings.label_password_confirm', 'required_with:old_password'],
+                ['full_name', 'igniter.user::default.settings.label_full_name', 'required|between:10,80'],
                 ['telephone', 'lang:igniter.user::default.settings.label_telephone', 'required'],
                 ['newsletter', 'lang:igniter.user::default.login.label_subscribe', 'integer'],
+                ['customer_address', 'lang:igniter.user::default.settings.label_address', 'required'],
             ];
 
             $this->validateAfter(function ($validator) {
@@ -295,7 +298,7 @@ class Account extends \System\Classes\BaseComponent
                     $validator->errors()->add('old_password', $message);
                 }
             });
-
+            //dd($data);
             $this->validate($data, $rules);
 
             $passwordChanged = false;

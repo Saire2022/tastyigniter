@@ -49,12 +49,12 @@
         <div class="col-6">
             <p>
                 <strong>@lang('admin::lang.orders.text_customer')</strong><br>
-                {{ $model->first_name.' '.$model->last_name.' ('.$model->email.')' }}
+                {{ $model->full_name.' ('.$model->email.')' }}
             </p>
             @if($model->isDeliveryType())
                 <div>
                     <strong>@lang('admin::lang.orders.text_deliver_to')</strong><br>
-                    <address>{{ $model->formatted_address }}</address>
+                    <address>{{ $model->customer_address }}</address>
                 </div>
             @endif
         </div>

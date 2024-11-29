@@ -332,6 +332,9 @@ return [
 
         'label_first_name' => 'First Name',
         'label_last_name' => 'Last Name',
+        'label_full_name' => 'Full Name',
+        'label_identification' => 'Identification',
+        'label_address' => 'Address',
         'label_password' => 'Password',
         'label_confirm_password' => 'Confirm Password',
         'label_telephone' => 'Telephone',
@@ -745,6 +748,7 @@ return [
 
         'column_location' => 'Location',
         'column_customer_name' => 'Customer Name',
+        'column_identification' => 'Identification',
         'column_payment' => 'Payment',
         'column_total' => 'Total',
         'column_time' => 'Order Time',
@@ -884,6 +888,7 @@ return [
         'label_table_min_capacity' => 'Table Minimum Capacity',
         'label_first_name' => 'First Name',
         'label_last_name' => 'Last Name',
+        'label_full_name' => 'Full Name',
         'label_customer_telephone' => 'Telephone',
 
         'help_reservation_duration' => 'Stay time in minutes. Leave blank to use the default stay time',

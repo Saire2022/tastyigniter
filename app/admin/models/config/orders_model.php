@@ -96,7 +96,13 @@ $config['list']['columns'] = [
     ],
     'full_name' => [
         'label' => 'lang:admin::lang.orders.column_customer_name',
-        'select' => "concat(first_name, ' ', last_name)",
+        //'select' => "concat(first_name, ' ', last_name)",
+        'select' => 'full_name',
+        'searchable' => true,
+    ],
+    'identification' => [
+        'label' => 'lang:admin::lang.orders.column_identification',
+        'select' => 'identification',
         'searchable' => true,
     ],
     'order_type_name' => [

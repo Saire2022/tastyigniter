@@ -46,7 +46,7 @@ class Customers_model extends AuthUserModel
 
     protected $purgeable = ['addresses', 'send_invite'];
 
-    public $appends = ['full_name'];
+    //public $appends = ['full_name'];
 
     protected $casts = [
         'customer_id' => 'integer',
@@ -59,22 +59,25 @@ class Customers_model extends AuthUserModel
         'date_invited' => 'datetime',
         'date_activated' => 'datetime',
         'reset_time' => 'datetime',
-        'identication' => 'string',
+        'identification' => 'string',
+        'full_name' => 'string',
+        'customer_address' => 'string',
     ];
 
     public static function getDropdownOptions()
     {
-        return static::isEnabled()->selectRaw('customer_id, concat(first_name, " ", last_name) as name')->dropdown('name');
+        //return static::isEnabled()->selectRaw('customer_id, concat(first_name, " ", last_name) as name')->dropdown('name');
+        return static::isEnabled()->select('customer_id, full_name as name')->dropdown('name');
     }
-
     //
     // Accessors & Mutators
     //
 
-    public function getFullNameAttribute($value)
-    {
-        return $this->first_name.' '.$this->last_name;
-    }
+//    public function getFullNameAttribute($value)
+//    {
+//        //dump($this->full_name);
+//        return $this->first_name.' '.$this->last_name;
+//    }
 
     public function getEmailAttribute($value)
     {

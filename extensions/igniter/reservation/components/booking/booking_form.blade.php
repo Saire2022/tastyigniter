@@ -10,13 +10,13 @@
         <div class="form-group">
             <input
                 type="text"
-                name="first_name"
-                id="first-name"
+                name="full_name"
+                id="full_name"
                 class="form-control"
-                placeholder="@lang('igniter.reservation::default.label_first_name')"
-                value="{{ set_value('first_name', $reservation->first_name) }}"
+                placeholder="@lang('igniter.reservation::default.label_full_name')"
+                value="{{ set_value('full_name', $reservation->full_name) }}"
             />
-            {!! form_error('first_name', '<span class="text-danger">', '</span>') !!}
+            {!! form_error('full_name', '<span class="text-danger">', '</span>') !!}
         </div>
     </div>
 
@@ -24,13 +24,13 @@
         <div class="form-group">
             <input
                 type="text"
-                name="last_name"
-                id="last-name"
+                name="identification"
+                id="identification"
                 class="form-control"
-                placeholder="@lang('igniter.reservation::default.label_last_name')"
-                value="{{ set_value('last_name', $reservation->last_name) }}"
+                placeholder="@lang('igniter.reservation::default.label_identification')"
+                value="{{ set_value('identification', $reservation->identification) }}"
             />
-            {!! form_error('last_name', '<span class="text-danger">', '</span>') !!}
+            {!! form_error('identification', '<span class="text-danger">', '</span>') !!}
         </div>
     </div>
 </div>

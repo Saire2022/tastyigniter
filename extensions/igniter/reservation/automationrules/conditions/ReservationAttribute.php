@@ -22,11 +22,17 @@ class ReservationAttribute extends BaseModelAttributesCondition
     public function defineModelAttributes()
     {
         return [
-            'first_name' => [
-                'label' => 'First Name',
+//            'first_name' => [
+//                'label' => 'First Name',
+//            ],
+//            'last_name' => [
+//                'label' => 'Last Name',
+//            ],
+            'full_name' => [
+                'label' => 'Full name',
             ],
-            'last_name' => [
-                'label' => 'Last Name',
+            'identification' => [
+                'label' => 'Identification',
             ],
             'email' => [
                 'label' => 'Email address',
